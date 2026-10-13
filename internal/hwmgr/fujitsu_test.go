@@ -108,6 +108,10 @@ func TestFujitsuListServers(t *testing.T) {
 		)
 	}
 
+	if device.Serial != "YLPK123456" {
+		t.Errorf("expected serial YLPK123456, got %q", device.Serial)
+	}
+
 	if requests != 2 {
 		t.Errorf("expected 2 requests, got %d", requests)
 	}
@@ -227,6 +231,10 @@ func TestFujitsuUsesBasicAuthentication(t *testing.T) {
 
 		if password != "password" {
 			t.Errorf("expected password password, got %q", password)
+		}
+
+		if req.Header.Get("Accept") != "application/json" {
+			t.Errorf("expected Accept: application/json header, got %q", req.Header.Get("Accept"))
 		}
 
 		return fujitsuResponse(http.StatusOK, `{
