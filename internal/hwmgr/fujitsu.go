@@ -22,6 +22,10 @@ func NewFujitsuClient(_ ClientOptions) (*FujitsuClient, error) {
 	}, nil
 }
 
+// NoConsole signals that Fujitsu has no central management console,
+// so the controller will skip import scheduling for Fujitsu servers.
+func (c *FujitsuClient) NoConsole() {}
+
 // ListServers returns an empty list. Fujitsu has no central vendor management
 // console to query for managed servers.
 func (c *FujitsuClient) ListServers() ([]Device, error) {

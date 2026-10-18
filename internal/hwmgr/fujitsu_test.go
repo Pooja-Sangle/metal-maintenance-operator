@@ -100,3 +100,11 @@ func TestFujitsuGetJobStatus(t *testing.T) {
 	}
 }
 
+func TestFujitsuHasNoConsole(t *testing.T) {
+	c, _ := NewFujitsuClient(ClientOptions{})
+
+	wrapped := &Client{ClientInterface: c}
+	if wrapped.HasConsole() {
+		t.Error("expected HasConsole to return false for Fujitsu")
+	}
+}
