@@ -13,7 +13,6 @@ import (
 // ErrServerHasActiveProfile is returned when a server cannot be removed because it has an active profile assigned.
 var ErrServerHasActiveProfile = errors.New("server has an active profile and cannot be removed")
 
-
 // Device represents a single device returned from the API
 type Device struct {
 	ID           int    `json:"Id"`
